@@ -25,6 +25,14 @@ typedef enum {
 @protocol OBOvumSource <NSObject>
 
 @required
+
+/** Gets an ovum from the source, based on the source View
+
+ @param sourceView The view where the dragging started
+ @return The newly created ovum for the drag operation.
+         Returns nil if the drag and drop operation should not respond to this operation
+         at this moment.
+*/
 -(OBOvum *) createOvumFromView:(UIView*)sourceView;
 
 @optional

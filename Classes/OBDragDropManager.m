@@ -362,6 +362,10 @@
   else if (recognizer.state == UIGestureRecognizerStateChanged)
   {
     OBOvum *ovum = recognizer.ovum;
+    if (recognizer.ovum == nil) { // the source said this shouldn't be dragged at this moment
+      return;
+    }
+
     UIView *dragView = ovum.dragView;
 
     // New center point for drag view without any modification because of the scale of initial offsets between touch and drag view center.
@@ -432,6 +436,9 @@
   {
     // Handle the case that the ovum was dropped successfully onto a drop target
     OBOvum *ovum = recognizer.ovum;
+    if (recognizer.ovum == nil) { // the source said this shouldn't be dragged at this moment
+      return;
+    }
 
     // Handle ovum movement since its location can be different than the last
     // UIGestureRecognizerStateChanged event
@@ -504,6 +511,10 @@
   {
     // Handle the case where an ovum isn't dropped on a drop target
     OBOvum *ovum = recognizer.ovum;
+    if (recognizer.ovum == nil) { // the source said this shouldn't be dragged at this moment
+      return;
+    }
+
     UIView *handlingView = ovum.currentDropHandlingView;
     CGPoint locationInView = [hostWindow convertPoint:locationInHostWindow toView:handlingView];
 
